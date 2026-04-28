@@ -25,16 +25,29 @@ let locations = [];
 init();
 
 async function init() {
-  trips = await loadJson("data/trips.json");
-  rides = await loadJson("data/rides.json");
-  locations = await loadJson("data/locations.json");
-
+  // ALWAYS initialize map first
   initMap();
-  populateControls();
-  renderRideList();
 
-  const latestRide = [...rides].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
-  await showRide(latestRide);
+  try {
+    trips = await loadJson("data/trips.json");
+    rides = await loadJson("data/rides.json");
+    locations = await loadJson("data/locations.json");
+
+    populateControls();
+    renderRideList();
+
+    // Only overlay if data exists
+    if (rides.length) {
+      const latestRide = [...rides].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      )[0];
+
+      await showRide(latestRide);
+    }
+
+  } catch (error) {
+    console.error("Data failed to load:", error);
+  }
 }
 
 function populateControls() {
