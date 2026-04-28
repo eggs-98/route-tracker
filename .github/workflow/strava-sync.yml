@@ -1,0 +1,35 @@
+name: Sync Strava
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync Strava activities
+        run: node automation/sync-strava.js
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data
+          git commit -m "Sync Strava rides" || echo "No changes to commit"
+          git push

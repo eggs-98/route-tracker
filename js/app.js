@@ -20,6 +20,7 @@ const rideList = document.getElementById("rideList");
 
 let trips = [];
 let rides = [];
+
 let locations = [];
 
 init();
