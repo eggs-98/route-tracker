@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Tracker</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Ride Tracker</h1>
+
+    <div class="view-toggle">
+      <button id="listViewBtn">List View</button>
+      <button id="mapViewBtn" class="active">Map View</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="controls">
+      <select id="tripSelect"></select>
+      <select id="rideSelect"></select>
+      <select id="locationSelect"></select>
+    </section>
+
+    <section id="listView" class="hidden">
+      <h2>All Rides</h2>
+      <div id="rideList"></div>
+    </section>
+
+    <section id="mapView">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f4f1ea;
+  color: #222;
+}
+
+header {
+  padding: 1rem;
+  background: #222;
+  color: white;
+}
+
+.view-toggle button {
+  padding: 0.6rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.view-toggle .active {
+  background: #e0a84f;
+}
+
+main {
+  padding: 1rem;
+}
+
+#controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+select {
+  padding: 0.5rem;
+}
+
+#map {
+  height: 75vh;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.ride-card {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+}
