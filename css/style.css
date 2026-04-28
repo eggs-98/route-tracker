@@ -38,6 +38,7 @@ select {
 
 #map {
   height: 75vh;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
 }
