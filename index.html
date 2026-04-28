@@ -36,6 +36,17 @@
   </main>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script type="module" src="js/app.js"></script>
+  <script>
+  const map = L.map("map").setView([51.0543, 3.7174], 10);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+
+  L.marker([51.0543, 3.7174])
+    .addTo(map)
+    .bindPopup("Ghent")
+    .openPopup();
+</script>
 </body>
 </html>
